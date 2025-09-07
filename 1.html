@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Site 1 - Send</title>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
+</head>
+
+<body>
+    <button onclick="sendMessage()">Надіслати сповіщення</button>
+
+    <script>
+        // Конфіг Firebase (створюєш проект на https://firebase.google.com)
+        const firebaseConfig = {
+            apiKey: "ТВОЙ_API_KEY",
+            authDomain: "project-id.firebaseapp.com",
+            databaseURL: "https://project-id.firebaseio.com",
+            projectId: "project-id",
+            storageBucket: "project-id.appspot.com",
+            messagingSenderId: "123456789",
+            appId: "1:123456789:web:abcd1234"
+        };
+
+        // Ініціалізація
+        const app = firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+
+        function sendMessage() {
+            db.ref("messages").push({
+                text: "Кнопку натиснули!",
+                time: Date.now()
+            });
+        }
+    </script>
+</body>
+
+</html>
